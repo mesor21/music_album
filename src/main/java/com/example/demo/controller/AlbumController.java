@@ -56,7 +56,7 @@ public class AlbumController {
         return "redirect:/";
     }
 
-    // Метод для удаления пациента на основе его идентификатора
+    // Метод для удаления трека на основе его идентификатора
     @Async
     @GetMapping("delete/{id}")
     public String delete(@PathVariable("id") String id) {
