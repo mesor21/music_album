@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header></header>
+<div class="blog">
+    <div class="container">
+        <h1>Альбом</h1>
+        <table>
+            <thead>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Название альбома</th>
+            <th>Артист</th>
+            <th>Дата выхода</th>
+            <th>Жанр</th>
+            <th>Длительность</th>
+            <th>Количество прослушиваний</th>
+            </thead>
+            <tr th:each="track: ${list}">
+                <td th:text="${track.getId}"></td>
+                <td th:text="${track.getName}"></td>
+                <td th:text="${track.getAlbumName}"></td>
+                <td th:text="${track.getArtist}"></td>
+                <td th:text="${track.getYear}"></td>
+                <td th:text="${track.getGenre}"></td>
+                <td th:text="${track.getDuration}"></td>
+                <td th:text="${track.getNubmerOfPleys}"></td>
+                <td><a th:href="@{/edit/{id}(id=${track.getId})}"
+                       class="btn3">Редактировать</a></td>
+            </tr>
+        </table>
+        <form th:action="@{/new}" method="get">
+            <button class="btn1 button" type="submit" method="get" >Добавить трек</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

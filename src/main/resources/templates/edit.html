@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header></header>
+<div class="blog">
+    <div class="container">
+        <p>Трек</p>
+        <table>
+            <thead>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Название альбома</th>
+            <th>Артист</th>
+            <th>Дата выхода</th>
+            <th>Жанр</th>
+            <th>Длительность</th>
+            <th>Количество прослушиваний</th>
+            </thead>
+            <tbody>
+            <tr th:each="track: ${track}">
+                <form th:action="'/edit/' + ${track.getId}" method="post">
+                    <table style="{width: 100%}">
+                        <tr>
+                            <td th:text=${track.getId}></td>
+                            <td><input th:value="${track.getName}" type="text" id="name" name="name" placeholder="name"></td>
+                            <td><input th:value="${track.getAlbumName}" type="text" id="albumName" name="albumName" placeholder="albumName"></td>
+                            <td><input th:value="${track.getArtist}" type="text" id="artist" name="artist" placeholder="artist"></td>
+                            <td><input th:value="${track.getYear}" type="text" id="year" name="year" placeholder="year"></td>
+                            <td><input th:value="${track.getGenre}" type="text" id="genre" name="genre" placeholder="genre"></td>
+                            <td><input th:value="${track.getDuration}" type="text" id="duration" name="duration" placeholder="duration"></td>
+                            <td><input th:value="${track.getNubmerOfPleys}" type="text" id="nubmerOfPleys" name="nubmerOfPleys" placeholder="nubmerOfPleys"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7">
+                                <div class="tableFooter">
+                                    <a th:href="@{/delete/{id}(id=${track.getId})}">
+                                        <button class="btn1" type="button">Удалить</button>
+                                    </a>
+                                    <a th:href="'/edit /' + ${track.getId}">
+                                        <button class="btn1" type="submit">Подтвердить изменения</button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
